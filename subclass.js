@@ -18,6 +18,7 @@
     var initializing = false;
 
     Object._subClass = function(properties) {
+        "use strict";
         var _super = this.prototype;
 
         initializing = true;

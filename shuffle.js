@@ -13,7 +13,10 @@ _c = codeMelon.utils;
  * `depth` items are shuffled.
  */
 codeMelon.utils.shuffle = function(items, depth) {
-    depth = depth ? depth : items.length;
+    "use strict";
+    var depth = depth ? depth : items.length,
+        i, j, tmp;
+    
     for (i = 0; i < depth; i++) {
         // find value with which to swap i
         j = Math.floor(Math.random() * (items.length - i)) + i;
@@ -38,5 +41,6 @@ codeMelon.utils.shuffle = function(items, depth) {
  * array, so use a copy if this array needs to be preserved.
  */
 codeMelon.utils.randomlyChoose = function(items, howMany) {
+    "use strict";
     return _c.shuffle(items, howMany).slice(0, howMany || items.length);
 };
