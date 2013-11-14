@@ -14,23 +14,24 @@
  * directly to the build-in JavaScript Object.
  */
 
-(function() {
+(function () {
     var initializing = false;
 
-    Object._subClass = function(properties) {
-        "use strict";
-        var _super = this.prototype;
+    Object._subClass = function (properties) {
+        var _super = this.prototype,
+            proto,
+            name;
 
         initializing = true;
-        var proto = new this();
+        proto = new this();
         initializing = false;
 
         // leaving out check for presence of "_super" string
-        for (var name in properties) {
+        for (name in properties) {
             proto[name] = typeof properties[name] === "function" &&
                 typeof _super[name] === "function" ?
-                (function(name, fn) {
-                    return function() {
+                (function (name, fn) {
+                    return function () {
                         this._super = this._super || {};
                         this._super[name] = _super[name];
                         return fn.apply(this, arguments);
