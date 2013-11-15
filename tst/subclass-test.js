@@ -1,4 +1,4 @@
-var Person = Object._subClass({
+var Person = Object.cMsubClass({
     init: function(isDancing) {
         this.dancing = isDancing;
     },
@@ -7,12 +7,12 @@ var Person = Object._subClass({
     }
 });
 
-var Ninja = Person._subClass({
+var Ninja = Person.cMsubClass({
     init: function() {
-        this._super.init(false);
+        this.cMsuper.init(false);
     },
     dance: function() {
-        return this._super.dance();
+        return this.cMsuper.dance();
     },
     swingSword: function() {
         return true;
