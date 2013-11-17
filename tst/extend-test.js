@@ -9,10 +9,10 @@ var Person = Base.extend({
 
 var Ninja = Person.extend({
     init: function() {
-        this._super.init(false);
+        this._super(true);
     },
     dance: function() {
-        return this._super.dance();
+        return this._super();
     },
     swingSword: function() {
         return true;
@@ -20,11 +20,11 @@ var Ninja = Person.extend({
 });
 
 test( "inheritance test", function() {
-    var person = new Person(true);
-    ok(person.dance(), "person is dancing");
+    var person = new Person(false);
+    ok(!person.dance(), "person isn't dancing");
     var ninja = new Ninja();
     ok(ninja.swingSword(), "sword swinging");
-    ok(!ninja.dance(), "ninja isn't dancing");
+    ok(ninja.dance(), "ninja is dancing");
     ok(person instanceof Base, "person instance of Base");
     ok(person instanceof Person, "person instance of Person");
     ok(ninja instanceof Ninja, "ninja instance of Ninja");
