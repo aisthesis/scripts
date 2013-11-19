@@ -37,7 +37,7 @@
         for (name in properties) {
             proto[name] = typeof properties[name] === "function" &&
                 typeof _super[name] === "function" ? (function (name, fn) {
-                    return function () {
+                    var retFn = function () {
                         var tmp = this._super,
                             ret;
 
@@ -46,6 +46,7 @@
                         this._super = tmp;
                         return ret;
                     };
+                    return retFn;
                 })(name, properties[name]) : properties[name];
         }
 
