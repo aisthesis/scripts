@@ -19,10 +19,11 @@
  */
 
 (function () {
+    "use strict";
     var initializing = false;
 
     // generic base class
-    this.Base = function() {};
+    window.Base = function() {};
 
     Base.extend = function extend(properties) {
         var _super = this.prototype,
